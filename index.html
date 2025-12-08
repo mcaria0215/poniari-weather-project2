@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>poniari-weather-project2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">  
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+  <link rel="stylesheet" href="assets/css/style.css">    
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['"Noto Sans KR"', 'sans-serif'],
+            },
+          }
+        }
+      }
+    
+  </script>
+</head>
+<body class="font-sans">
+
+  <div class="card">
+    <div class="card__search">
+      <input type="text" placeholder="enter city name" spellcheck="flase" class="card__search-input">
+      <button id="search-button" class="card__search-button" aria-label="Search">
+        <span class="icon-search card__search-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    
+    <div class="weather-display">
+      <img class="weather-display__icon" src="assets/image/rain.png" alt="날씨 아이콘">
+      <h1 class="weather-display__temp">22°</h1>
+      <h2 class="weather-display__city">New York</h2>
+      <div class="weather-display__details">
+        <div class="weather-display__col">
+          <img class="weather-display__col-img" src="assets/image/humidity.png" alt="습도 아이콘">
+          <div>
+            <p class="weather-display__humidity">50%</p>
+            <p class="weather-display__label">Humidity</p>
+          </div>
+        </div>
+        <div class="weather-display__col">
+          <img class="weather-display__col-img" src="assets/image/wind.png" alt="바람 아이콘">
+          <div>
+            <p class="weather-display__wind">15 km/h</p>
+            <p class="weather-display__label">Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-spinner loading-spinner--hidden">
+      <div class="loading-spinner__dot"></div>
+      <div class="loading-spinner__dot"></div>
+      <div class="loading-spinner__dot"></div>
+    </div>
+  </div>
+  
+  <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
