@@ -1,3 +1,4 @@
+// global constants
 import { API_KEY, GEO_BASE_URL } from './config.js';
 
 const DOM = {
@@ -10,7 +11,6 @@ const DOM = {
   weatherIcon: document.querySelector('.weather-display__icon'),
   weatherDisplay: document.querySelector('.weather-display'), 
   loadingSpinner: document.querySelector('.loading-spinner'),
-
   forecastContainer: document.querySelector('.forecast__list-container .swiper-wrapper'),
 };
 
@@ -23,6 +23,8 @@ const weatherImages = {
   'Snow': 'assets/image/snow.png',      
 };
 
+
+// utility functions
 const formatTimestamp = (timestamp) => {
   const date = new Date(timestamp * 1000);
   const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
@@ -65,6 +67,8 @@ const fetchWeatherByCoords = async (lat, lon, isForecast = false) => {
   return response.json();
 }
 
+
+// forecast data processing
 const processDailyForecast = (forecastData) => {
   const dailyDataMap = new Map();
 
@@ -109,6 +113,19 @@ const processDailyForecast = (forecastData) => {
   return dailyForecasts;
 };
 
+
+// UI rendering functions
+const updateCurrentWeatherUI = (data) => {      
+  DOM.temp.innerHTML = `${Math.round(data.main.temp)}°C`;
+  DOM.city.innerHTML = data.name;
+  DOM.humidity.innerHTML = `${data.main.humidity}%`;
+  DOM.wind.innerHTML = `${data.wind.speed} km/h`;
+
+  const weatherCondition = data.weather[0].main;
+
+  DOM.weatherIcon.src = weatherImages[weatherCondition] || 'assets/image/clear.png';
+}
+
 const renderForecast = (dailyForecasts) => {
   if (!DOM.forecastContainer) return;    
     
@@ -134,6 +151,8 @@ const renderForecast = (dailyForecasts) => {
   });
 };
 
+
+// swiper init
 let forecastSwiper = null;
 
 const initSwiper = () => {
@@ -151,6 +170,8 @@ const initSwiper = () => {
   });
 }
 
+
+// main logic
 const fetchAndRenderAllWeather = async (city)=>{
   if (!city) {
     alert("도시 이름을 입력해주세요.");
@@ -186,23 +207,12 @@ const fetchAndRenderAllWeather = async (city)=>{
     
   } catch (error) {
     if (error.message.includes('Weather API Error')) {        
-        alert("날씨 정보를 가져오는 중 서버 오류가 발생했습니다.");
+      alert("날씨 정보를 가져오는 중 서버 오류가 발생했습니다.");
     } else {
-        console.error("날씨 데이터를 가져오는 중 오류가 발생했습니다:", error);
+      console.error("날씨 데이터를 가져오는 중 오류가 발생했습니다:", error);
     }
     setLoadingState(false);
   }
-}
-
-const updateCurrentWeatherUI = (data) => {      
-  DOM.temp.innerHTML = `${Math.round(data.main.temp)}°C`;
-  DOM.city.innerHTML = data.name;
-  DOM.humidity.innerHTML = `${data.main.humidity}%`;
-  DOM.wind.innerHTML = `${data.wind.speed} km/h`;
-
-  const weatherCondition = data.weather[0].main;
-
-  DOM.weatherIcon.src = weatherImages[weatherCondition] || 'assets/image/clear.png';
 }
 
 const init = () => {
