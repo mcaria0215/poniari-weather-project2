@@ -3,23 +3,23 @@ body {
 }
 h1 {
   font-weight: 600;
-  font-size: 30px;
+  font-size: 2rem;
 }
 h2 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
-
 .card {
   width: 90%;
   max-width: 470px;
   margin: 100px auto 0;
-  padding: 40px 35px;
+  padding: 2.5rem 2rem;
   border-radius: 20px;
   background: linear-gradient(135deg, #00feba, #5b548a);
   color: #fff;
   text-align: center;
 }
+
 .card__search {
   width: 100%;
   display: flex;
@@ -31,9 +31,9 @@ h2 {
   outline: 0;
   flex: 1;
   height: 60px;
-  margin-right: 16px;
-  padding: 10px 25px;
-  border-radius: 30px;
+  margin-right: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
   background-color: #ebfffc;
   font-size: 18px;
   color: #555;
@@ -47,24 +47,25 @@ h2 {
   color: #111;
   cursor: pointer;
 }
+
 .weather-display__icon {
   width: 170px;
-  margin: 30px auto 0;
+  margin: 2rem auto 0;
 }
 .weather-display__temp {
   font-weight: 700;
-  font-size: 80px;
+  font-size: 5rem;
 }
 .weather-display__city {
   margin-top: -10px;
   font-weight: 500;
-  font-size: 45px;
+  font-size: 3rem;
 }
 .weather-display__details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 3rem;
   padding: 0 20px;
 }
 .weather-display__col {
@@ -73,55 +74,107 @@ h2 {
   text-align: left;
 }
 .weather-display__col-img {
-  width: 40px;
+  width: 2.5rem;
   margin-right: 10px;
 }
 .weather-display__humidity,
 .weather-display__wind { 
   margin-top: -6px;
-  font-size: 28px;
+  font-size: 1.75rem;
 }
 
+/* forecast */
+.forecast {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e5e7eb;
+}
+.forecast__title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+  color: #fff;
+}
+.forecast__list-container {  
+  padding-bottom: 0.5rem;
+  gap: 1rem; 
+}
+.forecast__item {  
+  width: 8rem;
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition: background-color 150ms ease-in-out;
+}
+.forecast__item:hover {
+  background-color: #f3f4f6;
+}
+.forecast__day {
+  font-weight: 600;
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+.forecast__date {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+.forecast__icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.forecast__temp-group {
+  margin-top: 0.5rem;
+}
+.forecast__temp--max {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+.forecast__temp--min {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+/* loading spinner */
 .loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px; /* weather-display와 비슷한 높이로 설정 */
-    /* 초기에는 숨겨둡니다. */
-    display: none; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;  
+  display: none; 
 }
-
-
 .loading-spinner--hidden {
-    display: none;
+  display: none;
 }
-
-/* Modifier가 없을 때만 (로딩 중일 때) 보입니다. */
 .loading-spinner:not(.loading-spinner--hidden) {
-    display: flex; /* 로딩 중일 때 표시 */
+  display: flex;
 }
-
 .loading-spinner__dot {
-    width: 15px;
-    height: 15px;
-    margin: 0 5px;
-    background-color: #ebfffc; /* 검색창 버튼과 동일한 밝은 색상 */
-    border-radius: 50%;
-    animation: bounce 1.4s infinite ease-in-out both;
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: #ebfffc;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
 }
-
 .loading-spinner__dot:nth-child(1) {
-    animation-delay: -0.32s;
+  animation-delay: -0.32s;
 }
 .loading-spinner__dot:nth-child(2) {
-    animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 
 @keyframes bounce {
-    0%, 80%, 100% {
-        transform: scale(0);
-    }
-    40% {
-        transform: scale(1.0);
-    }
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.0);
+  }
 }

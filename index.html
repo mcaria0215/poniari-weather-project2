@@ -8,21 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">  
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/style.css">    
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'sans': ['"Noto Sans KR"', 'sans-serif'],
-            },
-          }
-        }
-      }
-    
-  </script>
+  <script src="https://cdn.tailwindcss.com"></script>  
 </head>
 <body class="font-sans">
 
@@ -56,6 +44,33 @@
       </div>
     </div>
 
+    <div class="forecast">
+      <h3 class="forecast__title">5-Day Forecast</h3>
+      <div class="forecast__list-container swiper"> 
+        <div class="swiper-wrapper">
+          <div class="forecast__item swiper-slide">
+            <p class="forecast__day">WED</p>
+            <p class="forecast__date">Dec 10</p>
+            <img class="forecast__icon" src="assets/image/clear.png" alt="맑음 아이콘">
+            <div class="forecast__temp-group">
+              <span class="forecast__temp--max">25°</span>
+              <span class="forecast__temp--min"> / 18°</span>
+            </div>
+          </div>
+
+          <div class="forecast__item swiper-slide">
+            <p class="forecast__day">THU</p>
+            <p class="forecast__date">Dec 11</p>
+            <img class="forecast__icon" src="assets/image/clouds.png" alt="흐림 아이콘">
+            <div class="forecast__temp-group">
+              <span class="forecast__temp--max">22°</span>
+              <span class="forecast__temp--min"> / 15°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="loading-spinner loading-spinner--hidden">
       <div class="loading-spinner__dot"></div>
       <div class="loading-spinner__dot"></div>
@@ -63,6 +78,8 @@
     </div>
   </div>
   
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="assets/js/ui.js"></script>
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
